@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!, only: %i[create update destroy]
+  before_action :authenticate_user!, only: %i[create update edit destroy]
 
   def index
     @recipes = Recipe.all
@@ -17,6 +17,10 @@ class RecipesController < ApplicationController
     else
       render 'new'
     end
+  end
+ 
+  def edit
+    @recipe = Recipe.find(params[:id])
   end
 
   def update
