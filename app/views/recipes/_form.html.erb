@@ -1,5 +1,5 @@
 
-<%= form_with model: @recipe, local: true do |form| %>
+<%= simple_form_for(@recipe, html: { class: 'form-inline' }) do |f| %>
 
   <% if @recipe.errors.any? %>
     <div id='error_messages'>
@@ -16,21 +16,22 @@
   <% end %>
 
   <p>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= f.input :title, placeholder: 'Enter recipe title' %>
   </p>
 
   <p>
-    <%= form.label :difficulty_level %>
-    <%= form.text_field :difficulty_level %>
+    <%= f.select :category_id, options_for_select(%w[Vegan Vegetarian Chicken Beef]) %>
   </p>
 
   <p>
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= f.input :difficulty_level, placeholder: 'Difficulty from 1-5' %>
   </p>
 
   <p>
-    <%= form.submit %>
+    <%= f.input_field :description, placeholder: 'Description' %>
+  </p>
+
+  <p>
+    <%= f. button :submit %>
   </p>
 <% end %>
