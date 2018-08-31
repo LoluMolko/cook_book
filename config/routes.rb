@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :likes, only: %i[create destroy]
   end
+
+  resources :categories 
   
   root 'welcome#index'
 end

@@ -7,10 +7,11 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @categories = Category.all
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = Recipe.create(recipe_params)
 
     if @recipe.save
       redirect_to @recipe
@@ -35,7 +36,6 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    @like = Like.find_or_initialize_by(recipe: @recipe, user: current_user)
   end
 
   def destroy
@@ -48,6 +48,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :difficulty_level, :description)
+    params.require(:recipe).permit(:title, :difficulty_level, :description, :image, :category_id)
   end
 end

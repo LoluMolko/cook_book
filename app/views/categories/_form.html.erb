@@ -1,0 +1,9 @@
+<%= simple_form_for(@category, html: { class: 'form-inline' }) do |f| %>
+  <p>
+    <%= f.input :name %>
+  </p>
+  <p>
+    <%= f. button :submit, 'Add a categoy', class: "btn btn-primary"  %>
+  </p>
+<% end %>
+

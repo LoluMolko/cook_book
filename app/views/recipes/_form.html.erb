@@ -1,5 +1,5 @@
 
-<%= simple_form_for(@recipe, html: { class: 'form-inline' }) do |f| %>
+<%= simple_form_for(@recipe, html: { class: 'form-inline' }, ) do |f| %>
 
   <% if @recipe.errors.any? %>
     <div id='error_messages'>
@@ -20,11 +20,7 @@
   </p>
 
   <p>
-    <%= f.select :category_id, options_for_select(%w[Vegan Vegetarian Chicken Beef]) %>
-  </p>
-
-  <p>
-    <%= f.input :difficulty_level, placeholder: 'Difficulty from 1-5' %>
+    <%= f.input :difficulty_level, collection: 1..5, prompt: "Select difficulty" %>
   </p>
 
   <p>
@@ -32,6 +28,15 @@
   </p>
 
   <p>
-    <%= f. button :submit %>
+    <%= f.file_field :image %>
+  </p>
+
+  <p>
+    <%= f.association :category %>
+   </p>
+
+  <p>
+    <%= f. button :submit, class: "btn btn-primary" %>
   </p>
 <% end %>
+

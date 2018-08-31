@@ -1,14 +1,7 @@
 <h1><%= @recipe.title %></h1>
 
-<% if @like.persisted? %>
-  <%= link_to 'Unlike', recipe_like_path(@recipe, @like), method: :delete %>
-  <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-<% else %>
-  <%= link_to 'Like', recipe_likes_path(@recipe), method: :post %>
-  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-<% end %>
-
 <p>Difficulty level: <%= @recipe.difficulty_level%></p>
+<p>Category: <%= @recipe.category.name%></p>
 <p>Description: <%= @recipe.description%></p>
 <p><%= link_to 'Back to index', recipes_path %></p>
 
